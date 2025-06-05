@@ -10,9 +10,6 @@
 <body>
   <div class="container glass">
     <h1>AI Перекладач</h1>
-    <div id="settings" class="settings glass">
-      <input type="password" id="api-key" placeholder="OpenAI API Key" />
-    </div>
     <textarea id="input" placeholder="Введіть текст"></textarea>
     <div class="controls">
       <select id="tone">
@@ -27,7 +24,10 @@
     </div>
     <button id="translate" class="translate-btn"><i class="fas fa-language"></i></button>
     <textarea id="output" placeholder="Переклад" readonly></textarea>
-    <button id="settings-btn">Settings</button>
+    <button id="settings-btn"><i class="fas fa-cog"></i></button>
+    <div id="settings" class="settings glass">
+      <input type="password" id="api-key" placeholder="OpenAI API Key" />
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
