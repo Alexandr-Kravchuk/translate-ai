@@ -27,6 +27,7 @@ textarea,
 input[type="password"],
 select {
   width: 100%;
+  box-sizing: border-box;
   margin: 16px 0;
   padding: 12px;
   font-family: inherit;
