@@ -32,6 +32,14 @@ textarea {
   resize: vertical;
 }
 
+input[type="password"] {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
 .controls {
   display: flex;
   justify-content: space-between;

@@ -3,22 +3,62 @@ document.getElementById('swap').addEventListener('click', () => {
   dir.value = dir.value === 'ua-pl' ? 'pl-ua' : 'ua-pl';
 });
 
+const API_BASE = window.API_BASE || '';
+const API_URL = 'https://api.openai.com/v1/chat/completions';
+const MODEL = 'gpt-3.5-turbo';
+
+function getApiKey() {
+  return document.getElementById('api-key')?.value.trim();
+}
+
 document.getElementById('translate').addEventListener('click', async () => {
   const text = document.getElementById('input').value.trim();
   const tone = document.getElementById('tone').value;
   const direction = document.getElementById('direction').value;
   if (!text) return;
   try {
-    const res = await fetch('/translate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, direction, tone })
-    });
-    const data = await res.json();
-    if (data.translation) {
-      document.getElementById('output').value = data.translation;
+    if (API_BASE) {
+      const res = await fetch(`${API_BASE}/translate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, direction, tone })
+      });
+      const data = await res.json();
+      if (data.translation) {
+        document.getElementById('output').value = data.translation;
+      } else {
+        document.getElementById('output').value = data.error || 'Error';
+      }
     } else {
-      document.getElementById('output').value = data.error || 'Error';
+      const apiKey = getApiKey();
+      if (!apiKey) {
+        document.getElementById('output').value = 'API key required';
+        return;
+      }
+      const [from, to] = direction.split('-');
+      const style = tone === 'formal' ? 'офіційно' : 'дружньо';
+      const prompt = `Переклади з ${from === 'ua' ? 'української' : 'польської'} на ${to === 'ua' ? 'українську' : 'польську'} ${style}.`;
+
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: MODEL,
+          messages: [
+            { role: 'system', content: prompt },
+            { role: 'user', content: text }
+          ]
+        })
+      });
+      const data = await res.json();
+      if (data.choices && data.choices[0]) {
+        document.getElementById('output').value = data.choices[0].message.content.trim();
+      } else {
+        document.getElementById('output').value = 'Error';
+      }
     }
   } catch (e) {
     document.getElementById('output').value = 'Error';
