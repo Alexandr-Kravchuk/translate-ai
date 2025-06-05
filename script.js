@@ -3,6 +3,14 @@ document.getElementById('swap').addEventListener('click', () => {
   dir.value = dir.value === 'ua-pl' ? 'pl-ua' : 'ua-pl';
 });
 
+const settingsBtn = document.getElementById('settings-btn');
+const settings = document.getElementById('settings');
+if (settingsBtn && settings) {
+  settingsBtn.addEventListener('click', () => {
+    settings.classList.toggle('show');
+  });
+}
+
 const API_BASE = window.API_BASE || '';
 const API_URL = 'https://api.openai.com/v1/chat/completions';
 const MODEL = 'gpt-3.5-turbo';
@@ -29,7 +37,7 @@ function getApiKey() {
   return document.getElementById('api-key')?.value.trim();
 }
 
-document.getElementById('translate').addEventListener('click', async () => {
+async function translate() {
   const text = document.getElementById('input').value.trim();
   const tone = document.getElementById('tone').value;
   const direction = document.getElementById('direction').value;
@@ -67,6 +75,7 @@ document.getElementById('translate').addEventListener('click', async () => {
           model: MODEL,
           messages: [
             { role: 'system', content: prompt },
+            { role: 'system', content: tone === 'formal' ? 'Використовуй офіційний тон.' : 'Використовуй дружній тон.' },
             { role: 'user', content: text }
           ]
         })
@@ -81,4 +90,19 @@ document.getElementById('translate').addEventListener('click', async () => {
   } catch (e) {
     document.getElementById('output').value = 'Error';
   }
-});
+}
+
+const translateBtn = document.getElementById('translate');
+if (translateBtn) {
+  translateBtn.addEventListener('click', translate);
+}
+
+const inputField = document.getElementById('input');
+if (inputField) {
+  inputField.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      translate();
+    }
+  });
+}

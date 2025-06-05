@@ -22,28 +22,41 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-textarea {
+textarea,
+input[type="password"],
+select {
   width: 100%;
-  min-height: 100px;
   margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   resize: vertical;
+  transition: box-shadow 0.2s;
 }
 
-input[type="password"] {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
+textarea:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5);
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.settings {
+  display: none;
+  margin-bottom: 10px;
+}
+
+.settings.show {
+  display: block;
 }
 
 button {
@@ -56,8 +69,21 @@ button {
   color: #000;
 }
 
-select {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
+#translate.translate-btn {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: 50%;
+  background: #4caf50;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s;
+}
+
+#translate.translate-btn:active {
+  transform: scale(0.95);
 }

@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Translator</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="container glass">
     <h1>AI Перекладач</h1>
-    <input type="password" id="api-key" placeholder="OpenAI API Key" />
+    <div id="settings" class="settings glass">
+      <input type="password" id="api-key" placeholder="OpenAI API Key" />
+    </div>
     <textarea id="input" placeholder="Введіть текст"></textarea>
     <div class="controls">
       <select id="tone">
@@ -22,8 +25,9 @@
         <option value="pl-ua">PL → UA</option>
       </select>
     </div>
-    <button id="translate">Перекласти</button>
+    <button id="translate" class="translate-btn"><i class="fas fa-language"></i></button>
     <textarea id="output" placeholder="Переклад" readonly></textarea>
+    <button id="settings-btn">Settings</button>
   </div>
   <script src="script.js"></script>
 </body>
