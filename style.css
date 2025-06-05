@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: url('https://images.unsplash.com/photo-1528490060256-c345efae4443') no-repeat center/cover;
   min-height: 100vh;
   display: flex;
@@ -105,4 +105,9 @@ button {
 #settings-btn i {
   font-size: 16px;
   color: #000;
+}
+
+#translate.translate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
