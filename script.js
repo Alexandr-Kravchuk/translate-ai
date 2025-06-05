@@ -124,3 +124,15 @@ if (inputField) {
     }
   });
 }
+
+const copyBtn = document.getElementById('copy-btn');
+const outputField = document.getElementById('output');
+if (copyBtn && outputField) {
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(outputField.value);
+    } catch (e) {
+      /* noop */
+    }
+  });
+}

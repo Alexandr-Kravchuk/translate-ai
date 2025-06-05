@@ -11,21 +11,25 @@
 <body>
   <div class="container glass">
     <h1>AI Перекладач</h1>
+    <label for="input">Текст для перекладу</label>
     <textarea id="input" placeholder="Введіть текст"></textarea>
     <div class="controls">
-      <select id="tone">
+      <label for="tone" title="Офіційно, Розмовно, З гумором та інші стилі">Стиль перекладу:</label>
+      <select id="tone" title="Офіційно, Розмовно, З гумором та інші стилі">
         <option value="friendly">Дружньо</option>
         <option value="formal">Офіційно</option>
       </select>
-      <button id="swap">⇄</button>
+      <button id="swap" class="swap-btn" title="Поміняти мови місцями">⇄</button>
       <select id="direction">
         <option value="ua-pl">UA → PL</option>
         <option value="pl-ua">PL → UA</option>
       </select>
     </div>
     <button id="translate" class="translate-btn"><i class="fas fa-language"></i></button>
+    <label for="output">Результат перекладу</label>
     <textarea id="output" placeholder="Переклад" readonly></textarea>
-    <button id="settings-btn"><i class="fas fa-cog"></i></button>
+    <button id="copy-btn" title="Скопіювати переклад"><i class="fas fa-copy"></i></button>
+    <button id="settings-btn" title="Налаштування перекладача"><i class="fas fa-cog"></i></button>
     <div id="settings" class="settings glass">
       <input type="password" id="api-key" placeholder="OpenAI API Key" />
     </div>
