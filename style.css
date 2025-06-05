@@ -12,7 +12,7 @@ body {
   position: relative;
   width: 90%;
   max-width: 600px;
-  padding: 20px;
+  padding: 24px;
   border-radius: 10px;
 }
 
@@ -27,7 +27,7 @@ textarea,
 input[type="password"],
 select {
   width: 100%;
-  margin: 10px 0;
+  margin: 16px 0;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -49,11 +49,12 @@ select:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 }
 
 .settings {
   display: none;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .settings.show {
@@ -61,8 +62,8 @@ select:focus {
 }
 
 button {
-  padding: 10px 20px;
-  margin-top: 10px;
+  padding: 12px 24px;
+  margin-top: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -71,8 +72,8 @@ button {
 }
 
 #translate.translate-btn {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   padding: 0;
   border-radius: 50%;
   background: #4caf50;
@@ -91,8 +92,8 @@ button {
 
 #settings-btn {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 16px;
+  right: 16px;
   width: 32px;
   height: 32px;
   padding: 0;
