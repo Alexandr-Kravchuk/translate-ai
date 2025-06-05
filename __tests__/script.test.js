@@ -28,14 +28,24 @@ describe('script.js', () => {
     global.fetch = originalFetch;
   });
 
-  test('swap button toggles direction', () => {
+  test('swap button toggles direction and swaps text', () => {
     require('../public/script.js');
     const dir = document.getElementById('direction');
     dir.value = 'ua-pl';
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+    input.value = 'hello';
+    output.value = 'привіт';
+
     document.getElementById('swap').click();
     expect(dir.value).toBe('pl-ua');
+    expect(input.value).toBe('привіт');
+    expect(output.value).toBe('hello');
+
     document.getElementById('swap').click();
     expect(dir.value).toBe('ua-pl');
+    expect(input.value).toBe('hello');
+    expect(output.value).toBe('привіт');
   });
 
   test('translate button shows translation on success', async () => {

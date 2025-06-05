@@ -1,6 +1,12 @@
 document.getElementById('swap').addEventListener('click', () => {
   const dir = document.getElementById('direction');
   dir.value = dir.value === 'ua-pl' ? 'pl-ua' : 'ua-pl';
+
+  const input = document.getElementById('input');
+  const output = document.getElementById('output');
+  const temp = input.value;
+  input.value = output.value;
+  output.value = temp;
 });
 
 const API_BASE = window.API_BASE || '';
