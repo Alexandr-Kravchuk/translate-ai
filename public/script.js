@@ -7,6 +7,24 @@ const API_BASE = window.API_BASE || '';
 const API_URL = 'https://api.openai.com/v1/chat/completions';
 const MODEL = 'gpt-3.5-turbo';
 
+const API_KEY_STORAGE = 'openai-api-key';
+
+const apiKeyInput = document.getElementById('api-key');
+if (apiKeyInput) {
+  const saved = localStorage.getItem(API_KEY_STORAGE);
+  if (saved) {
+    apiKeyInput.value = saved;
+  }
+  apiKeyInput.addEventListener('input', () => {
+    const val = apiKeyInput.value.trim();
+    if (val) {
+      localStorage.setItem(API_KEY_STORAGE, val);
+    } else {
+      localStorage.removeItem(API_KEY_STORAGE);
+    }
+  });
+}
+
 function getApiKey() {
   return document.getElementById('api-key')?.value.trim();
 }

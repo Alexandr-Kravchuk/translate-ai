@@ -3,6 +3,7 @@ describe('script.js', () => {
 
   beforeEach(() => {
     document.body.innerHTML = `
+      <input id="api-key" />
       <button id="swap"></button>
       <select id="direction">
         <option value="ua-pl">UA → PL</option>
@@ -16,10 +17,11 @@ describe('script.js', () => {
       </select>
       <textarea id="output"></textarea>
     `;
+    window.API_BASE = '/api';
+    localStorage.clear();
     originalFetch = global.fetch;
     global.fetch = jest.fn();
     jest.resetModules();
-    require('../public/script.js');
   });
 
   afterEach(() => {
@@ -27,6 +29,7 @@ describe('script.js', () => {
   });
 
   test('swap button toggles direction', () => {
+    require('../public/script.js');
     const dir = document.getElementById('direction');
     dir.value = 'ua-pl';
     document.getElementById('swap').click();
@@ -36,6 +39,7 @@ describe('script.js', () => {
   });
 
   test('translate button shows translation on success', async () => {
+    require('../public/script.js');
     global.fetch.mockResolvedValue({
       ok: true,
       json: async () => ({ translation: 'hello' }),
@@ -45,13 +49,14 @@ describe('script.js', () => {
     document.getElementById('tone').value = 'friendly';
     document.getElementById('translate').click();
     await new Promise(r => setTimeout(r, 0));
-    expect(global.fetch).toHaveBeenCalledWith('/translate', expect.objectContaining({
+    expect(global.fetch).toHaveBeenCalledWith('/api/translate', expect.objectContaining({
       method: 'POST',
     }));
     expect(document.getElementById('output').value).toBe('hello');
   });
 
   test('translate button shows error message', async () => {
+    require('../public/script.js');
     global.fetch.mockResolvedValue({
       ok: true,
       json: async () => ({ error: 'fail' }),
@@ -63,6 +68,7 @@ describe('script.js', () => {
   });
 
   test('translate button handles fetch failure', async () => {
+    require('../public/script.js');
     global.fetch.mockRejectedValue(new Error('network'));
     document.getElementById('input').value = 'text';
     document.getElementById('translate').click();
@@ -71,9 +77,24 @@ describe('script.js', () => {
   });
 
   test('does not call fetch when text is empty', async () => {
+    require('../public/script.js');
     document.getElementById('input').value = '';
     document.getElementById('translate').click();
     await new Promise(r => setTimeout(r, 0));
     expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  test('loads API key from localStorage', () => {
+    localStorage.setItem('openai-api-key', 'abc');
+    require('../public/script.js');
+    expect(document.getElementById('api-key').value).toBe('abc');
+  });
+
+  test('stores API key to localStorage on input', () => {
+    require('../public/script.js');
+    const input = document.getElementById('api-key');
+    input.value = 'xyz';
+    input.dispatchEvent(new Event('input'));
+    expect(localStorage.getItem('openai-api-key')).toBe('xyz');
   });
 });
