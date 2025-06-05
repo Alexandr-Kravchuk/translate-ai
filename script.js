@@ -1,6 +1,13 @@
 document.getElementById('swap').addEventListener('click', () => {
   const dir = document.getElementById('direction');
   dir.value = dir.value === 'ua-pl' ? 'pl-ua' : 'ua-pl';
+  const input = document.getElementById('input');
+  const output = document.getElementById('output');
+  if (input && output) {
+    const tmp = input.value;
+    input.value = output.value;
+    output.value = tmp;
+  }
 });
 
 const settingsBtn = document.getElementById('settings-btn');
