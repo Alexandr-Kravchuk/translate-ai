@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Translator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container glass">
+    <h1>AI Перекладач</h1>
+    <textarea id="input" placeholder="Введіть текст"></textarea>
+    <div class="controls">
+      <select id="tone">
+        <option value="friendly">Дружньо</option>
+        <option value="formal">Офіційно</option>
+      </select>
+      <button id="swap">⇄</button>
+      <select id="direction">
+        <option value="ua-pl">UA → PL</option>
+        <option value="pl-ua">PL → UA</option>
+      </select>
+    </div>
+    <button id="translate">Перекласти</button>
+    <textarea id="output" placeholder="Переклад" readonly></textarea>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
