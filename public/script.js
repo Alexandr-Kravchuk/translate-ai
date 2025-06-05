@@ -4,9 +4,7 @@ document.getElementById('swap').addEventListener('click', () => {
 
   const input = document.getElementById('input');
   const output = document.getElementById('output');
-  const temp = input.value;
-  input.value = output.value;
-  output.value = temp;
+  [input.value, output.value] = [output.value, input.value];
 });
 
 const API_BASE = window.API_BASE || '';
