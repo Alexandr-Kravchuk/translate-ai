@@ -48,6 +48,12 @@ async function translate() {
   const text = document.getElementById('input').value.trim();
   const tone = document.getElementById('tone').value;
   const direction = document.getElementById('direction').value;
+  const btn = document.getElementById('translate');
+  const original = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+  }
   if (!text) return;
   try {
     if (API_BASE) {
@@ -96,6 +102,11 @@ async function translate() {
     }
   } catch (e) {
     document.getElementById('output').value = 'Error';
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = original;
+    }
   }
 }
 
