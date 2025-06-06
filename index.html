@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Translator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AI Translator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <div class="container glass">
-    <h1>AI Перекладач</h1>
-    <label for="input">Текст для перекладу</label>
-    <textarea id="input" placeholder="Введіть текст"></textarea>
-    <button id="translate" class="translate-btn"><i class="fas fa-language"></i></button>
-    <div class="controls">
-      <label for="tone" title="Офіційно, Розмовно, З гумором та інші стилі">Стиль перекладу:</label>
-      <select id="tone" title="Офіційно, Розмовно, З гумором та інші стилі">
-        <option value="friendly">Дружньо</option>
-        <option value="formal">Офіційно</option>
-      </select>
-      <button id="swap" class="swap-btn" title="Поміняти мови місцями">⇄</button>
-      <select id="direction">
-        <option value="ua-pl">UA → PL</option>
-        <option value="pl-ua">PL → UA</option>
-      </select>
-    </div>
-    <label for="output">Результат перекладу</label>
-    <textarea id="output" placeholder="Переклад" readonly></textarea>
-    <button id="copy-btn" title="Скопіювати переклад"><i class="fas fa-copy"></i></button>
-    <button id="settings-btn" title="Налаштування перекладача"><i class="fas fa-cog"></i></button>
-    <div id="settings" class="settings glass">
-      <input type="password" id="api-key" placeholder="OpenAI API Key" />
-    </div>
-  </div>
-  <script src="script.js"></script>
+<div class="container glass">
+	<h1>AI Перекладач (gpt-4)</h1>
+	<div class="text-container">
+		<label for="input">Текст для перекладу</label>
+		<div class="input-container">
+			<textarea id="input" placeholder="Введіть текст"></textarea>
+			<button id="translate" class="translate-btn action-btn"><i class="fas fa-language"></i></button>
+		</div>
+	</div>
+	<div class="controls">
+		<label for="tone">Стиль</label>
+		<select id="tone">
+			<option value="friendly">Дружньо</option>
+			<option value="formal">Офіційно</option>
+		</select>
+		<button id="swap" class="swap-btn" title="Поміняти мови місцями">
+			<i class="fa-solid fa-right-left"></i>
+		</button>
+		<select id="direction">
+			<option value="ua-pl">UA → PL</option>
+			<option value="pl-ua">PL → UA</option>
+		</select>
+	</div>
+	<div class="text-container">
+		<label for="output">Результат перекладу</label>
+		<div class="input-container">
+			<textarea id="output" placeholder="Переклад" readonly></textarea>
+			<button id="copy-btn" class="action-btn" title="Скопіювати переклад"><i class="fas fa-copy"></i></button>
+		</div>
+	</div>
+	<div id="settings" class="settings">
+		<input type="password" id="api-key" placeholder="OpenAI API Key"/>
+	</div>
+	<button id="settings-btn" title="Налаштування перекладача"><i class="fa-duotone fa-solid fa-key"></i></i></i></button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

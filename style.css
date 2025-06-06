@@ -1,161 +1,220 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  background: url('https://images.unsplash.com/photo-1528490060256-c345efae4443') no-repeat center/cover;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+	font-family: 'Roboto', sans-serif;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
 }
 
 .container {
-  position: relative;
-  width: 90%;
-  max-width: 600px;
-  padding: 24px;
-  border-radius: 10px;
+	position: relative;
+	width: 100%;
+	max-width: 600px;
+	padding: 24px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
 }
 
 textarea,
 input[type="password"],
 select {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 16px 0;
-  padding: 12px;
-  font-family: inherit;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(5px);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  resize: vertical;
-  transition: box-shadow 0.2s;
+	width: 100%;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	background-color: rgb(235, 235, 235);
+	box-shadow: inset 3px 3px 6px #d1d1d1,
+	inset -3px -3px 6px #ffffff;
+	top: 6.5em;
+	left: 1.5em;
+	padding: 1em;
+	transition: .4s ease-in-out;
+}
+
+textarea:hover,
+input[type="password"]:hover,
+select:hover {
+	box-shadow: inset 0px 0px 0px #d1d1d1,
+	inset 0px 0px 0px #ffffff;
+	background-color: lightgrey;
 }
 
 textarea:focus,
 input[type="password"]:focus,
 select:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5);
+	box-shadow: inset 0px 0px 0px #d1d1d1,
+	inset 0px 0px 0px #ffffff;
+	background-color: lightgrey;
+}
+
+textarea {
+	min-height: 64px;
 }
 
 .controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
 }
 
-.swap-btn {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.settings {
-  display: none;
-  margin-bottom: 16px;
-}
-
-.settings.show {
-  display: block;
+label {
+	font-size: 14px;
+	color: #797878;
 }
 
 button {
-  padding: 12px 24px;
-  margin-top: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.3);
-  color: #000;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
 }
 
-#translate.translate-btn {
-  width: 64px;
-  height: 64px;
-  padding: 0;
-  /* Square button with slightly rounded corners */
-  border-radius: 8px;
-  background: #4caf50;
-  color: #fff;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.1s;
+.swap-btn {
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.7);
 }
 
-#translate.translate-btn:active {
-  transform: scale(0.95);
+.action-btn {
+	min-width: 100px;
+	font-size: 32px;
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	transition: .4s ease-in-out;
+	box-shadow: 1px 1px 3px #b5b5b5, -1px -1px 3px #ffffff;
+}
+
+.action-btn:active {
+	box-shadow: inset 3px 3px 6px #b5b5b5, inset -3px -3px 6px #ffffff;
+}
+
+
+#translate:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+#direction {
+	width: 100px;
+}
+
+.translate-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	position: relative;
+}
+
+.text-input {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	align-items: center;
+}
+
+.translate-output {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.settings-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.settings {
+	display: none;
+	padding: 16px;
+}
+
+.settings.show {
+	display: block;
 }
 
 #settings-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#copy-btn {
-  position: absolute;
-  bottom: 16px;
-  right: 56px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 4px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
 }
 
 #settings-btn i {
-  font-size: 16px;
-  color: #000;
-}
-
-#translate.translate-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+	font-size: 16px;
+	color: #afaeae;
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 16px;
-  }
-  textarea,
-  input[type="password"],
-  select,
-  button {
-    font-size: 16px;
-  }
-  #translate.translate-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
-  }
-  #settings-btn,
-  #copy-btn {
-    bottom: 8px;
-  }
+	body {
+		align-items: flex-start;
+		margin: 8px;
+	}
+
+	.container {
+		padding: 16px;
+		max-width: 100%;
+		height: calc(100vh - 48px);
+		gap: 25px;
+	}
+
+	.text-container {
+		height: 30%;
+	}
+
+	.text-input {
+		height: 100%;
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	#translate {
+		width: 100%;
+		height: 60px;
+		font-size: 18px;
+	}
+
+	#input {
+		height: 100%;
+	}
+
+	.translate-container {
+		flex-grow: 1;
+	}
+
+	#output {
+		height: 100%;
+	}
 }
