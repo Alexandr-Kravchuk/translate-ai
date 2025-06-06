@@ -20,7 +20,8 @@ if (settingsBtn && settings) {
 
 const API_BASE = window.API_BASE || '';
 const API_URL = 'https://api.openai.com/v1/chat/completions';
-const MODEL = 'gpt-3.5-turbo';
+const MODEL = 'gpt-4';
+const TEMPERATURE = 0.2;
 
 const API_KEY_STORAGE = 'openai-api-key';
 
@@ -75,8 +76,10 @@ async function translate() {
         return;
       }
       const [from, to] = direction.split('-');
-      const style = tone === 'formal' ? 'офіційно' : 'дружньо';
-      const prompt = `Переклади з ${from === 'ua' ? 'української' : 'польської'} на ${to === 'ua' ? 'українську' : 'польську'} ${style}.`;
+      const base = `Ти професійний перекладач з ${from === 'ua' ? 'української' : 'польської'} на ${to === 'ua' ? 'українську' : 'польську'}. Перекладай точно і природно.`;
+      const toneNote = tone === 'formal'
+        ? 'Використовуй офіційний тон.'
+        : 'Використовуй дружній тон.';
 
       const res = await fetch(API_URL, {
         method: 'POST',
@@ -86,10 +89,10 @@ async function translate() {
         },
         body: JSON.stringify({
           model: MODEL,
+          temperature: TEMPERATURE,
           messages: [
-            { role: 'system', content: prompt },
-            { role: 'system', content: tone === 'formal' ? 'Використовуй офіційний тон.' : 'Використовуй дружній тон.' },
-            { role: 'user', content: text }
+            { role: 'system', content: `${base} ${toneNote}` },
+            { role: 'user', content: `Переклади фразу: "${text}"` }
           ]
         })
       });
