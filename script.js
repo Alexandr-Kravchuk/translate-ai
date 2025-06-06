@@ -20,8 +20,7 @@ if (settingsBtn && settings) {
 
 const API_BASE = window.API_BASE || '';
 const API_URL = 'https://api.openai.com/v1/chat/completions';
-const MODEL = 'gpt-4';
-const TEMPERATURE = 0.2;
+const MODEL = 'gpt-3.5-turbo';
 
 const API_KEY_STORAGE = 'openai-api-key';
 
@@ -89,19 +88,20 @@ async function translate() {
 				},
 				body: JSON.stringify({
 					model: MODEL,
-					temperature: TEMPERATURE,
 					messages: [
 						{role: 'system', content: `${base} ${toneNote}`},
-						{role: 'user', content: `Переклади фразу: "${text}"`}
+						{role: 'user', content: `Переклади фразу: ${text}`}
 					]
 				})
 			});
-			const data = await res.json();
-			if (data.choices && data.choices[0]) {
-				document.getElementById('output').value = data.choices[0].message.content.trim();
-			} else {
-				document.getElementById('output').value = 'Error';
+			if (!res.ok) {
+				const errorData = await res.json();
+				document.getElementById('output').value = errorData.error?.message || 'Error';
+				return;
 			}
+			const data = await res.json();
+			const result = data.choices?.[0]?.message?.content?.trim() || '';
+			document.getElementById('output').value = result;
 		}
 	} catch (e) {
 		document.getElementById('output').value = 'Error';
