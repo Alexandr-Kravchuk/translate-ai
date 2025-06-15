@@ -40,17 +40,18 @@ body {
 textarea,
 input[type="password"],
 select {
-	flex-grow: 1;
-	border-radius: 5px;
-	border: none;
-	outline: none;
-	background-color: rgb(235, 235, 235);
-	box-shadow: inset 3px 3px 6px #d1d1d1,
-	inset -3px -3px 6px #ffffff;
-	top: 6.5em;
-	left: 1.5em;
-	padding: 1em;
-	transition: .4s ease-in-out;
+        flex-grow: 1;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        background-color: rgb(235, 235, 235);
+        box-shadow: inset 3px 3px 6px #d1d1d1,
+        inset -3px -3px 6px #ffffff;
+        top: 6.5em;
+        left: 1.5em;
+        padding: 1em;
+        font-size: 16px;
+        transition: .4s ease-in-out;
 }
 
 textarea:hover,
