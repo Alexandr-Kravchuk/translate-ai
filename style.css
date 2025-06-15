@@ -1,10 +1,12 @@
 body {
-	font-family: 'Roboto', sans-serif;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
+        font-family: 'Roboto', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background: linear-gradient(135deg, #e4aaff 0%, #269c6b 100%);
+        background-attachment: fixed;
 }
 
 .container {
@@ -19,10 +21,11 @@ body {
 }
 
 .glass {
-	background: rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(10px);
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(8px) saturate(180%);
+        -webkit-backdrop-filter: blur(8px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .text-container {
