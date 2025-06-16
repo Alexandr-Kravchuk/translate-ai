@@ -13,25 +13,25 @@
 	<h1>AI Перекладач (gpt-4)</h1>
 	<div class="text-container">
 		<label for="input">Текст для перекладу</label>
-		<div class="input-container">
-			<textarea id="input" placeholder="Введіть текст"></textarea>
-			<button id="translate" class="translate-btn action-btn"><i class="fas fa-language"></i></button>
-		</div>
-	</div>
-	<div class="controls">
-		<label for="tone">Стиль</label>
-		<select id="tone">
-			<option value="friendly">Дружньо</option>
-			<option value="formal">Офіційно</option>
-		</select>
-		<button id="swap" class="swap-btn" title="Поміняти мови місцями">
-			<i class="fa-solid fa-right-left"></i>
-		</button>
-		<select id="direction">
-			<option value="ua-pl">UA → PL</option>
-			<option value="pl-ua">PL → UA</option>
-		</select>
-	</div>
+                <div class="input-container">
+                        <textarea id="input" placeholder="Введіть текст"></textarea>
+                        <div class="vertical-btns">
+                                <button id="clear-input" class="icon-btn" title="Очистити"><i class="fas fa-xmark"></i></button>
+                                <button id="copy-input" class="icon-btn" title="Скопіювати текст"><i class="fas fa-copy"></i></button>
+                        </div>
+                </div>
+        </div>
+        <div class="controls">
+                <button id="translate-friendly" class="action-btn">Дружньо</button>
+                <button id="translate-formal" class="action-btn">Офіційно</button>
+        </div>
+        <div class="controls">
+                <button class="direction-btn active" id="dir-ua-pl" data-value="ua-pl">UA → PL</button>
+                <button id="swap" class="swap-btn" title="Поміняти мови місцями">
+                        <i class="fa-solid fa-right-left"></i>
+                </button>
+                <button class="direction-btn" id="dir-pl-ua" data-value="pl-ua">PL → UA</button>
+        </div>
 	<div class="text-container">
 		<label for="output">Результат перекладу</label>
 		<div class="input-container">
