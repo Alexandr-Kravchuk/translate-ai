@@ -74,7 +74,8 @@ select:focus {
 }
 
 textarea {
-	min-height: 64px;
+        min-height: 64px;
+        caret-color: #000;
 }
 
 .controls {
