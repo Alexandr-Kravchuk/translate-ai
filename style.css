@@ -35,9 +35,26 @@ body {
 }
 
 .input-container {
-	display: flex;
-	flex-direction: row;
-	gap: 16px;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+}
+
+.vertical-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+}
+
+.icon-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.7);
 }
 
 textarea,
@@ -119,17 +136,17 @@ button {
 }
 
 .action-btn:active {
-	box-shadow: inset 3px 3px 6px #b5b5b5, inset -3px -3px 6px #ffffff;
+        box-shadow: inset 3px 3px 6px #b5b5b5, inset -3px -3px 6px #ffffff;
 }
 
-
-#translate:disabled {
-	opacity: 0.6;
-	cursor: not-allowed;
+.direction-btn {
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.7);
 }
 
-#direction {
-	width: 100px;
+.direction-btn.active {
+        background: rgba(255, 255, 255, 1);
+        box-shadow: inset 3px 3px 6px #b5b5b5, inset -3px -3px 6px #ffffff;
 }
 
 .translate-container {

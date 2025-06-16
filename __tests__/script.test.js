@@ -5,17 +5,15 @@ describe('script.js', () => {
     document.body.innerHTML = `
       <input id="api-key" />
       <button id="swap"></button>
-      <select id="direction">
-        <option value="ua-pl">UA → PL</option>
-        <option value="pl-ua">PL → UA</option>
-      </select>
-      <button id="translate"></button>
+      <button class="direction-btn active" data-value="ua-pl"></button>
+      <button class="direction-btn" data-value="pl-ua"></button>
+      <button id="translate-friendly"></button>
+      <button id="translate-formal"></button>
       <textarea id="input"></textarea>
-      <select id="tone">
-        <option value="friendly">friendly</option>
-        <option value="formal">formal</option>
-      </select>
       <textarea id="output"></textarea>
+      <button id="clear-input"></button>
+      <button id="copy-input"></button>
+      <button id="copy-btn"></button>
     `;
     window.API_BASE = '/api';
     localStorage.clear();
@@ -30,18 +28,18 @@ describe('script.js', () => {
 
   test('swap button toggles direction and swaps text', () => {
     require('../script.js');
-    const dir = document.getElementById('direction');
+    const ua = document.querySelector('.direction-btn[data-value="ua-pl"]');
+    const pl = document.querySelector('.direction-btn[data-value="pl-ua"]');
     const input = document.getElementById('input');
     const output = document.getElementById('output');
-    dir.value = 'ua-pl';
     input.value = 'a';
     output.value = 'b';
     document.getElementById('swap').click();
-    expect(dir.value).toBe('pl-ua');
+    expect(pl.classList.contains('active')).toBe(true);
     expect(input.value).toBe('b');
     expect(output.value).toBe('a');
     document.getElementById('swap').click();
-    expect(dir.value).toBe('ua-pl');
+    expect(ua.classList.contains('active')).toBe(true);
     expect(input.value).toBe('a');
     expect(output.value).toBe('b');
   });
@@ -53,9 +51,7 @@ describe('script.js', () => {
       json: async () => ({ translation: 'hello' }),
     });
     document.getElementById('input').value = 'test';
-    document.getElementById('direction').value = 'ua-pl';
-    document.getElementById('tone').value = 'friendly';
-    document.getElementById('translate').click();
+    document.getElementById('translate-friendly').click();
     await new Promise(r => setTimeout(r, 0));
     expect(global.fetch).toHaveBeenCalledWith('/api/translate', expect.objectContaining({
       method: 'POST',
@@ -70,7 +66,7 @@ describe('script.js', () => {
       json: async () => ({ error: 'fail' }),
     });
     document.getElementById('input').value = 'text';
-    document.getElementById('translate').click();
+    document.getElementById('translate-friendly').click();
     await new Promise(r => setTimeout(r, 0));
     expect(document.getElementById('output').value).toBe('fail');
   });
@@ -79,7 +75,7 @@ describe('script.js', () => {
     require('../script.js');
     global.fetch.mockRejectedValue(new Error('network'));
     document.getElementById('input').value = 'text';
-    document.getElementById('translate').click();
+    document.getElementById('translate-friendly').click();
     await new Promise(r => setTimeout(r, 0));
     expect(document.getElementById('output').value).toBe('Error');
   });
@@ -87,7 +83,7 @@ describe('script.js', () => {
   test('does not call fetch when text is empty', async () => {
     require('../script.js');
     document.getElementById('input').value = '';
-    document.getElementById('translate').click();
+    document.getElementById('translate-friendly').click();
     await new Promise(r => setTimeout(r, 0));
     expect(global.fetch).not.toHaveBeenCalled();
   });
