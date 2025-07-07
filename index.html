@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,39 +10,39 @@
 </head>
 <body>
 <div class="container glass">
-	<h1>AI Перекладач (gpt-4)</h1>
+        <h1>AI Translator (gpt-4)</h1>
 	<div class="text-container">
-		<label for="input">Текст для перекладу</label>
+                <label for="input">Text to translate</label>
                 <div class="input-container">
-                        <textarea id="input" placeholder="Введіть текст"></textarea>
+                        <textarea id="input" placeholder="Enter text"></textarea>
                         <div class="vertical-btns">
-                                <button id="clear-input" class="icon-btn" title="Очистити"><i class="fas fa-xmark"></i></button>
-                                <button id="copy-input" class="icon-btn" title="Скопіювати текст"><i class="fas fa-copy"></i></button>
+                                <button id="clear-input" class="icon-btn" title="Clear"><i class="fas fa-xmark"></i></button>
+                                <button id="copy-input" class="icon-btn" title="Copy text"><i class="fas fa-copy"></i></button>
                         </div>
                 </div>
         </div>
         <div class="controls">
-                <button id="translate-friendly" class="action-btn">Дружньо</button>
-                <button id="translate-formal" class="action-btn">Офіційно</button>
+                <button id="translate-friendly" class="action-btn">Friendly</button>
+                <button id="translate-formal" class="action-btn">Formal</button>
         </div>
         <div class="controls">
                 <button class="direction-btn active" id="dir-ua-pl" data-value="ua-pl">UA → PL</button>
-                <button id="swap" class="swap-btn" title="Поміняти мови місцями">
+                <button id="swap" class="swap-btn" title="Swap languages">
                         <i class="fa-solid fa-right-left"></i>
                 </button>
                 <button class="direction-btn" id="dir-pl-ua" data-value="pl-ua">PL → UA</button>
         </div>
 	<div class="text-container">
-		<label for="output">Результат перекладу</label>
+                <label for="output">Translation result</label>
 		<div class="input-container">
-			<textarea id="output" placeholder="Переклад" readonly></textarea>
-			<button id="copy-btn" class="action-btn" title="Скопіювати переклад"><i class="fas fa-copy"></i></button>
+                        <textarea id="output" placeholder="Translation" readonly></textarea>
+                        <button id="copy-btn" class="action-btn" title="Copy translation"><i class="fas fa-copy"></i></button>
 		</div>
 	</div>
 	<div id="settings" class="settings">
 		<input type="password" id="api-key" placeholder="OpenAI API Key"/>
 	</div>
-	<button id="settings-btn" title="Налаштування перекладача"><i class="fa-duotone fa-solid fa-key"></i></i></i></button>
+        <button id="settings-btn" title="Translator settings"><i class="fa-duotone fa-solid fa-key"></i></i></i></button>
 </div>
 <script src="script.js"></script>
 </body>
