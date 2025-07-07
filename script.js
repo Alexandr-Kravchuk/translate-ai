@@ -93,10 +93,10 @@ async function translate(tone, btn) {
                                 return;
                         }
                         const [from, to] = direction.split('-');
-                        const base = `Ти професійний перекладач з ${from === 'ua' ? 'української' : 'польської'} на ${to === 'ua' ? 'українську' : 'польську'}. Перекладай точно і природно.`;
+                        const base = `You are a professional translator from ${from === 'ua' ? 'Ukrainian' : 'Polish'} to ${to === 'ua' ? 'Ukrainian' : 'Polish'}. Translate accurately and naturally.`;
                         const toneNote = tone === 'formal'
-                                ? 'Використовуй офіційний тон.'
-                                : 'Використовуй дружній тон.';
+                                ? 'Use a formal tone.'
+                                : 'Use a friendly tone.';
 
                         const res = await fetch(API_URL, {
                                 method: 'POST',
@@ -108,7 +108,7 @@ async function translate(tone, btn) {
                                         model: MODEL,
                                         messages: [
                                                 {role: 'system', content: `${base} ${toneNote}`},
-                                                {role: 'user', content: `Переклади фразу: ${text}`}
+                                                {role: 'user', content: `Translate the phrase: ${text}`}
                                         ]
                                 })
                         });
