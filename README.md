@@ -42,7 +42,7 @@ Authorization: Bearer YOUR_API_KEY
 Content-Type: application/json
 
 {
-  "model": "gpt-4",
+  "model": "gpt-5-nano",
   "messages": [
     {
       "role": "system",

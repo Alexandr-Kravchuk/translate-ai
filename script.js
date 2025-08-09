@@ -34,7 +34,7 @@ document.querySelectorAll('.direction-btn').forEach(btn => {
 
 const API_BASE = window.API_BASE || '';
 const API_URL = 'https://api.openai.com/v1/chat/completions';
-const MODEL = 'gpt-3.5-turbo';
+const MODEL = 'gpt-5-nano';
 
 const API_KEY_STORAGE = 'openai-api-key';
 
